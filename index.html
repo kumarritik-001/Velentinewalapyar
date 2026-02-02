@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Will You Be My Valentine? 💖</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  font-family: 'Poppins', sans-serif;
+}
+body{
+  margin:0;
+  background:linear-gradient(180deg,#ffe6ef,#fff);
+  text-align:center;
+  overflow-x:hidden;
+}
+
+/* GENERAL */
+.section{
+  min-height:100vh;
+  padding:40px 20px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+}
+.hidden{display:none;}
+
+h1{
+  color:#ff4d88;
+  font-size:2.2rem;
+}
+h2{
+  color:#ff4d88;
+}
+p{
+  color:#555;
+}
+
+/* BUTTONS */
+.btn{
+  border:none;
+  padding:14px 26px;
+  border-radius:30px;
+  font-size:1.1rem;
+  cursor:pointer;
+  transition:0.3s;
+}
+.yes{
+  background:#ff4d88;
+  color:white;
+}
+.no{
+  background:#ddd;
+  position:absolute;
+}
+
+/* PROPOSAL */
+#proposal{
+  position:relative;
+}
+.btn-wrap{
+  margin-top:25px;
+  position:relative;
+  height:80px;
+  width:100%;
+}
+
+/* GOOD CHOICE */
+.gif{
+  width:120px;
+  margin:10px;
+}
+.infinity{
+  font-size:1.5rem;
+  color:#ff4d88;
+}
+
+/* ACTUALLY NO */
+#fakeNo{
+  margin-top:20px;
+  background:#ccc;
+  color:#333;
+}
+
+/* TOO LATE BOX */
+.box{
+  background:white;
+  padding:20px;
+  border-radius:20px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.1);
+  max-width:350px;
+}
+
+/* IDEAS */
+.idea{
+  background:#fff;
+  margin:10px auto;
+  padding:12px;
+  border-radius:15px;
+  width:100%;
+  max-width:380px;
+}
+
+/* ENVELOPE */
+.envelope{
+  width:120px;
+  height:80px;
+  background:#ff6f9c;
+  border-radius:10px;
+  position:relative;
+  cursor:pointer;
+  animation:shake 1.5s infinite;
+}
+.envelope:before{
+  content:'';
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:#ff8fb2;
+  clip-path:polygon(0 0,50% 50%,100% 0);
+}
+@keyframes shake{
+  0%{transform:rotate(0)}
+  25%{transform:rotate(2deg)}
+  50%{transform:rotate(-2deg)}
+  75%{transform:rotate(2deg)}
+  100%{transform:rotate(0)}
+}
+
+/* MEMORIES */
+.mem-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:15px;
+  margin-top:20px;
+}
+.mem{
+  background:#ffe6ef;
+  border-radius:15px;
+  padding:20px;
+  cursor:pointer;
+}
+.mem img{
+  width:100%;
+  border-radius:15px;
+  display:none;
+}
+</style>
+</head>
+
+<body>
+
+<!-- PART 1 -->
+<div class="section" id="proposal">
+  <h1>Will you be my Valentine? 💕</h1>
+  <p>Official invitation from your long-distance boyfriend 💌</p>
+
+  <div class="btn-wrap">
+    <button class="btn yes" id="yesBtn">YES 💖</button>
+    <button class="btn no" id="noBtn">No 😒</button>
+  </div>
+</div>
+
+<!-- PART 2 -->
+<div class="section hidden" id="choice">
+  <h1>Good choice baby 🥰</h1>
+  <p>You just unlocked unlimited hugs, kisses & cuddles<br>
+  <small>(redeemable very soon, I promise)</small></p>
+
+  <img src="gif1.gif" class="gif">
+  <img src="gif2.gif" class="gif">
+
+  <p class="infinity">Now you're stuck with me forever ∞</p>
+
+  <p>Wait… do you want to change your mind? ☺️</p>
+  <button class="btn" id="fakeNo">Actually no.. 😈</button>
+</div>
+
+<!-- TOO LATE -->
+<div class="section hidden" id="toolate">
+  <div class="box">
+    <h2>Too late! 😤</h2>
+    <p>You already said YES which means:</p>
+    <p>❌ No take-backs allowed<br>
+    ❌ You are legally mine now (I checked)<br>
+    ❌ Every “no” from now on = 10 extra kisses<br>
+    ✅ You're stuck with your gandu boyfriend FOREVER 😈</p>
+    <small>Deal with it 😌💕</small>
+  </div>
+</div>
+
+<!-- IDEAS -->
+<div class="section hidden" id="ideas">
+  <h2>Our virtual date ideas 📱</h2>
+  <div class="idea">🎬 Netflix party + video call</div>
+  <div class="idea">🍕 Order same food & judge habits</div>
+  <div class="idea">🌙 Late night talks → sleeping</div>
+  <div class="idea">🎵 Playlist exchange (you’re wrong btw)</div>
+  <div class="idea">📷 Send selfies so I can simp</div>
+  <div class="idea">🎮 Games & watch you destroy me</div>
+  <div class="idea">☕ Fancy virtual coffee dates</div>
+</div>
+
+<!-- SECRET NOTE -->
+<div class="section hidden" id="secret">
+  <h2>A secret note for you 💌</h2>
+  <p>Click the envelope to open it</p>
+  <div class="envelope" id="env"></div>
+
+  <h2 style="margin-top:40px;">Our favourite memories 📷</h2>
+  <div class="mem-grid">
+    <div class="mem" onclick="showImg(this,0)">🎁<img src="photo1.jpg"></div>
+    <div class="mem" onclick="showImg(this,1)">🎁<img src="photo2.jpg"></div>
+    <div class="mem" onclick="showImg(this,2)">🎁<img src="photo3.jpg"></div>
+    <div class="mem" onclick="showImg(this,3)">🎁<img src="photo4.jpg"></div>
+  </div>
+</div>
+
+<script>
+let tries=0;
+const noBtn=document.getElementById("noBtn");
+const yesBtn=document.getElementById("yesBtn");
+
+noBtn.onclick=()=>{
+  tries++;
+  const x=Math.random()*200-100;
+  const y=Math.random()*60;
+  noBtn.style.transform=`translate(${x}px,${y}px)`;
+  yesBtn.style.transform=`scale(${1+tries*0.15})`;
+
+  if(tries>=4){
+    document.getElementById("proposal").classList.add("hidden");
+    document.getElementById("choice").classList.remove("hidden");
+    window.scrollTo({top:document.body.scrollHeight,behavior:"smooth"});
+  }
+};
+
+yesBtn.onclick=()=>{
+  document.getElementById("proposal").classList.add("hidden");
+  document.getElementById("choice").classList.remove("hidden");
+  window.scrollTo({top:document.body.scrollHeight,behavior:"smooth"});
+};
+
+let fakeTries=0;
+const fake=document.getElementById("fakeNo");
+fake.onclick=()=>{
+  fakeTries++;
+  fake.style.transform=`translate(${Math.random()*200-100}px,${Math.random()*60}px) rotateY(180deg)`;
+  if(fakeTries>=3){
+    document.getElementById("choice").classList.add("hidden");
+    document.getElementById("toolate").classList.remove("hidden");
+    document.getElementById("ideas").classList.remove("hidden");
+    document.getElementById("secret").classList.remove("hidden");
+    window.scrollTo({top:document.body.scrollHeight,behavior:"smooth"});
+  }
+};
+
+function showImg(el,i){
+  el.querySelector("img").style.display="block";
+  el.innerHTML=el.querySelector("img").outerHTML;
+}
+</script>
+
+</body>
+</html>
